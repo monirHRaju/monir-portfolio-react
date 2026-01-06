@@ -1,6 +1,40 @@
+import { useRef, useState } from 'react';
 import { FaPaperPlane } from "react-icons/fa";
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
+    const form = useRef();
+    const [loading, setLoading] = useState(false);
+    const [status, setStatus] = useState({ type: '', message: '' });
+
+    const sendEmail = (e) => {
+        e.preventDefault();
+        setLoading(true);
+        setStatus({ type: '', message: '' });
+
+        // Accessing environment variables
+        const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+        const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+        const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+        emailjs
+            .sendForm(SERVICE_ID, TEMPLATE_ID, form.current, {
+                publicKey: PUBLIC_KEY,
+            })
+            .then(
+                () => {
+                    setLoading(false);
+                    setStatus({ type: 'success', message: 'Message sent successfully!' });
+                    form.current.reset();
+                },
+                (error) => {
+                    setLoading(false);
+                    setStatus({ type: 'error', message: 'Failed to send message. Please try again.' });
+                    console.error('FAILED...', error.text);
+                },
+            );
+    };
+
     return (
         <div className="fade-in">
              <header className="mb-10">
@@ -11,31 +45,46 @@ const Contact = () => {
 
             <section className="mb-10">
                 <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6">Contact Form</h3>
-                <form className="space-y-6">
+                
+                {status.message && (
+                    <div className={`mb-4 p-4 rounded-xl ${status.type === 'success' ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400' : 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400'}`}>
+                        {status.message}
+                    </div>
+                )}
+
+                <form ref={form} onSubmit={sendEmail} className="space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <input 
                             type="text" 
+                            name="user_name"
                             placeholder="Full Name" 
+                            required
                             className="w-full bg-gray-50 dark:bg-zinc-900/50 border border-gray-200 dark:border-gray-800 rounded-xl px-4 py-3 outline-none focus:border-primary dark:focus:border-primary transition-colors text-gray-700 dark:text-gray-300"
                         />
                         <input 
                             type="email" 
+                            name="user_email"
                             placeholder="Email Address" 
+                            required
                             className="w-full bg-gray-50 dark:bg-zinc-900/50 border border-gray-200 dark:border-gray-800 rounded-xl px-4 py-3 outline-none focus:border-primary dark:focus:border-primary transition-colors text-gray-700 dark:text-gray-300"
                         />
                     </div>
                     <textarea 
+                        name="message"
                         placeholder="Your Message" 
                         rows="4" 
+                        required
                         className="w-full bg-gray-50 dark:bg-zinc-900/50 border border-gray-200 dark:border-gray-800 rounded-xl px-4 py-3 outline-none focus:border-primary dark:focus:border-primary transition-colors text-gray-700 dark:text-gray-300 resize-none"
                     ></textarea>
                     
                     <div className="flex justify-end">
                         <button 
-                            className="flex items-center gap-2 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-semibold py-3 px-8 rounded-xl shadow-lg transform active:scale-95 transition-all duration-200"
+                            type="submit"
+                            disabled={loading}
+                            className="flex items-center gap-2 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-semibold py-3 px-8 rounded-xl shadow-lg transform active:scale-95 transition-all duration-200 disabled:opacity-70 disabled:cursor-not-allowed"
                         >
-                            <FaPaperPlane className="text-xl" />
-                            Send Message
+                            <FaPaperPlane className={`text-xl ${loading ? 'animate-pulse' : ''}`} />
+                            {loading ? 'Sending...' : 'Send Message'}
                         </button>
                     </div>
                 </form>

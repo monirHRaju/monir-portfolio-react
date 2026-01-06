@@ -1,6 +1,8 @@
 import { FaReact, FaNodeJs, FaDatabase, FaHtml5, FaCss3, FaJs, FaGitAlt } from "react-icons/fa";
 import { SiNextdotjs } from "react-icons/si";
 import { MdDeveloperMode, MdAnalytics } from "react-icons/md";
+import ServiceCard from "../components/ServiceCard";
+import MyServices from "../components/MyServices";
 
 const About = () => {
   return (
@@ -81,8 +83,8 @@ const About = () => {
         <h2 className="text-2xl font-bold mb-6 flex items-center">
           <span className="text-primary mr-1">M</span>y Services
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="bg-gray-50 dark:bg-zinc-900/50 p-6 rounded-2xl border border-gray-200 dark:border-gray-800 hover:border-primary dark:hover:border-primary transition-all duration-300 group">
+        <div className="">
+          {/* <div className="bg-gray-50 dark:bg-zinc-900/50 p-6 rounded-2xl border border-gray-200 dark:border-gray-800 hover:border-primary dark:hover:border-primary transition-all duration-300 group">
             <div className="mb-4">
               <MdDeveloperMode className="text-4xl text-primary group-hover:scale-110 transition-transform" />
             </div>
@@ -94,18 +96,8 @@ const About = () => {
               maintenance of your mobile app project.
             </p>
           </div>
-          <div className="bg-gray-50 dark:bg-zinc-900/50 p-6 rounded-2xl border border-gray-200 dark:border-gray-800 hover:border-primary dark:hover:border-primary transition-all duration-300 group">
-            <div className="mb-4">
-              <MdAnalytics className="text-4xl text-primary group-hover:scale-110 transition-transform" />
-            </div>
-            <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
-              Data Scientist
-            </h3>
-            <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-              Great marketing campaigns, improve customer service, better
-              business decisions and effective strategies.
-            </p>
-          </div>
+           */}
+           <MyServices />
         </div>
       </section>
     </div>

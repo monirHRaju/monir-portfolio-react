@@ -1,6 +1,7 @@
 // Image imported via URL in img tag
 import { FaLinkedin, FaDribbble, FaTwitter, FaGithub, FaDownload, FaPaperPlane } from "react-icons/fa";
 import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const ProfileCard = () => {
     const x = useMotionValue(0);
@@ -70,10 +71,10 @@ const ProfileCard = () => {
                         Download CV
                         <FaDownload className="text-lg group-hover:animate-bounce" />
                     </a>
-                    <a className="flex-1 flex items-center justify-center gap-2 text-sm font-bold uppercase tracking-wide hover:text-primary transition-colors" href="#">
+                    <Link className="flex-1 flex items-center justify-center gap-2 text-sm font-bold uppercase tracking-wide hover:text-primary transition-colors" to="/contact">
                         Contact Me
                         <FaPaperPlane className="text-lg -rotate-0" />
-                    </a>
+                    </Link>
                 </div>
             </motion.div>
         </div>

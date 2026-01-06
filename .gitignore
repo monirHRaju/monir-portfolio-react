@@ -26,3 +26,4 @@ _legacy_design
 
 # Local Netlify folder
 .netlify
+.env

@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { FaNetworkWired, FaRegFileAlt, FaRegIdCard, FaAddressBook, FaRegUser } from "react-icons/fa";
 import { MdMenu, MdDarkMode, MdLightMode } from "react-icons/md";
@@ -29,9 +29,9 @@ const Sidebar = () => {
 
     return (
         <nav className="fixed left-4 top-1/2 transform -translate-y-1/2 z-50 md:sticky md:top-8 md:translate-y-0 hidden md:flex flex-col items-center py-6 px-3 bg-white dark:bg-sidebar-dark rounded-full shadow-lg border border-gray-200 dark:border-gray-800 h-auto min-h-[500px] justify-between transition-all duration-300">
-            <button className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-500 dark:text-gray-400 mb-6">
-                <MdMenu className="text-2xl" />
-            </button>
+            <Link to="/" className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-500 dark:text-gray-400 mb-6">
+                <img src="logo.svg" width={30} height={30} alt="" />
+            </Link>
 
             <div className="flex flex-col gap-6 items-center flex-1 justify-center w-full">
                 {navItems.map((item) => (
