@@ -1,0 +1,68 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+@layer base {
+  body {
+    @apply font-body bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-200 transition-colors duration-300 min-h-screen overflow-x-hidden;
+  }
+}
+
+/* Custom scrollbar from legacy */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: transparent; 
+}
+::-webkit-scrollbar-thumb {
+    background: #444; 
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #5BB954; 
+}
+
+/* 3D Utilities */
+.perspective-1000 {
+    perspective: 1000px;
+}
+.transform-style-3d {
+    transform-style: preserve-3d;
+}
+.translate-z-10 {
+    transform: translateZ(30px);
+}
+
+/* Clip path for the profile image slant */
+.clip-path-slant {
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+}
+
+/* Timeline Styles from legacy resume.html */
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: -39px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #5BB954;
+    box-shadow: 0 0 0 4px #2e2e30; 
+    z-index: 1;
+}
+.timeline-line {
+    position: absolute;
+    left: 6px;
+    top: 10px;
+    height: calc(100% - 10px);
+    width: 1px;
+    background: #3f3f46;
+}
+
+html:not(.dark) .timeline-item::before {
+    box-shadow: 0 0 0 4px #f3f4f6;
+}
+html:not(.dark) .timeline-line {
+    background: #e5e7eb;
+}
