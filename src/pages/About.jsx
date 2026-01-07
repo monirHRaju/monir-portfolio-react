@@ -25,7 +25,7 @@ const About = () => {
         {/* Personal Info Grid - Full Width */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Location */}
-          <div className="p-4 bg-gray-50 dark:bg-zinc-900/50 rounded-xl border border-gray-100 dark:border-gray-800 hover:border-primary/50 transition-colors">
+          <div className="sci-fi-card p-4 rounded-xl shadow-lg transition-colors">
             <span className="block px-2 py-1 bg-primary/20 text-primary text-xs font-semibold rounded w-fit mb-2">
               Location
             </span>
@@ -35,7 +35,7 @@ const About = () => {
           </div>
 
           {/* Languages */}
-          <div className="p-4 bg-gray-50 dark:bg-zinc-900/50 rounded-xl border border-gray-100 dark:border-gray-800 hover:border-primary/50 transition-colors">
+          <div className="sci-fi-card p-4 rounded-xl shadow-lg transition-colors">
             <span className="block px-2 py-1 bg-primary/20 text-primary text-xs font-semibold rounded w-fit mb-2">
               Languages
             </span>
@@ -45,7 +45,7 @@ const About = () => {
           </div>
 
           {/* Skills (Tech Stack Icons) */}
-          <div className="p-4 bg-gray-50 dark:bg-zinc-900/50 rounded-xl border border-gray-100 dark:border-gray-800 hover:border-primary/50 transition-colors">
+          <div className="sci-fi-card p-4 rounded-xl shadow-lg transition-colors">
              <span className="block px-2 py-1 bg-primary/20 text-primary text-xs font-semibold rounded w-fit mb-3">
               Skills
             </span>

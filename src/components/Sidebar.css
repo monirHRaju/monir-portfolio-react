@@ -1,0 +1,64 @@
+@keyframes rotate-border {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes pulse-shadow {
+    0%, 100% { box-shadow: 0 0 5px rgba(91, 185, 84, 0.3), 0 0 10px rgba(91, 185, 84, 0.1); }
+    50% { box-shadow: 0 0 15px rgba(91, 185, 84, 0.5), 0 0 25px rgba(91, 185, 84, 0.2); }
+}
+
+.sci-fi-sidebar {
+    position: relative;
+    overflow: hidden; /* Clips the spinning gradient */
+    border: none !important;
+    border-radius: 9999px; /* Tailwind rounded-full */
+    animation: pulse-shadow 3s infinite ease-in-out;
+    isolation: isolate;
+}
+
+/* The Spinning Gradient Layer */
+.sci-fi-sidebar::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200vmax; /* Ensure it covers everything regardless of size */
+    height: 200vmax; 
+    background: conic-gradient(
+        from 0deg,
+        transparent 0deg,
+        transparent 280deg,
+        #5BB954 320deg,    /* Primary Green */
+        #e0ffba 340deg,    /* Highlight */
+        #5BB954 360deg
+    );
+    animation: rotate-border 5s linear infinite;
+    z-index: -2;
+}
+
+/* The Inner Background */
+.sci-fi-sidebar::after {
+    content: '';
+    position: absolute;
+    inset: 2px; /* Border width */
+    background: #ffffff; /* Default Light */
+    border-radius: 9999px;
+    z-index: -1;
+}
+
+/* Dark mode overrides */
+html.dark .sci-fi-sidebar::after {
+    background: #18181b; /* Matches tailwind 'bg-sidebar-dark' */
+}
+
+/* Link Enhancements */
+.sci-fi-icon {
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.sci-fi-link:hover .sci-fi-icon {
+    transform: scale(1.2);
+    filter: drop-shadow(0 0 5px rgba(91, 185, 84, 0.8));
+    color: #5BB954;
+}

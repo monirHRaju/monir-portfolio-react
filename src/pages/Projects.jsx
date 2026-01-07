@@ -67,7 +67,7 @@ const Projects = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pb-4">
                 {filteredProjects.map((project, index) => (
-                    <a key={index} href="#" className="group relative block bg-gray-50 dark:bg-zinc-900/50 rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 hover:border-primary dark:hover:border-primary transition-all duration-300 shadow-sm hover:shadow-lg hover:-translate-y-1">
+                    <a key={index} href="#" className="sci-fi-card group relative block rounded-2xl overflow-hidden transition-all duration-300 shadow-sm hover:shadow-lg hover:-translate-y-1">
                         <div className="h-48 overflow-hidden relative">
                             <img alt={project.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src={project.image}/>
                             <a href={project.href} target="_blank" className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">

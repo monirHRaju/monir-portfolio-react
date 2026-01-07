@@ -83,7 +83,7 @@ const Resume = () => {
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Coding Skills */}
-                    <div className="bg-gray-50 dark:bg-zinc-900/50 p-6 rounded-2xl border border-gray-200 dark:border-gray-800">
+                    <div className="sci-fi-card bg-gray-50 dark:bg-zinc-900/50 p-6 rounded-2xl border border-gray-200 dark:border-gray-800">
                         <h3 className="font-bold text-gray-800 dark:text-gray-200 mb-5">Coding</h3>
                         <div className="space-y-4">
                             <div>
@@ -116,11 +116,11 @@ const Resume = () => {
                         </div>
                     </div>
                     {/* Knowledge Skills */}
-                    <div className="bg-gray-50 dark:bg-zinc-900/50 p-6 rounded-2xl border border-gray-200 dark:border-gray-800">
+                    <div className="sci-fi-card bg-gray-50 dark:bg-zinc-900/50 p-6 rounded-2xl border border-gray-200 dark:border-gray-800">
                         <h3 className="font-bold text-gray-800 dark:text-gray-200 mb-5">Knowledge</h3>
                         <div className="flex flex-wrap gap-2">
                              {["React", "Next", "Node", "Laravel", "Tailwind", "Framer Motion", "Git", "Responsive Design", "SEO", "Firebase", "Stripe", "Vercel", "Netlify", "Context API", "Redux", "JWT", "WordPress"].map(skill => (
-                                <span key={skill} className="px-3 py-1.5 bg-white dark:bg-zinc-800 text-xs font-medium text-gray-600 dark:text-gray-300 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">{skill}</span>
+                                <span key={skill} className="px-3 sci-fi-card py-1.5 bg-white dark:bg-zinc-800 text-xs font-medium text-gray-600 dark:text-gray-300 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">{skill}</span>
                              ))}
                         </div>
                     </div>

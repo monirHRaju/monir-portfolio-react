@@ -1,0 +1,60 @@
+/* Sci-Fi Card Global Styles */
+
+@keyframes spin-gradient {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.sci-fi-card {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    border: 2px solid transparent; /* Reserves space for the glowing border */
+    z-index: 1;
+}
+
+.sci-fi-card::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(
+        from 70deg, 
+        transparent 0deg, 
+        transparent 270deg, 
+        #5BB954 315deg, 
+        #e0ffba 340deg, 
+        #5BB954 360deg
+    );
+    animation: spin-gradient 4s linear infinite;
+    animation-play-state: paused;
+    z-index: -2;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.sci-fi-card::after {
+    content: '';
+    position: absolute;
+    inset: 2px; /* Match border width */
+    background: var(--card-bg, #ffffff);
+    border-radius: inherit;
+    z-index: -1;
+}
+
+.sci-fi-card:hover::before {
+    opacity: 1;
+    animation-play-state: running;
+}
+
+/* Dark Mode Defaults */
+html.dark .sci-fi-card {
+    --card-bg: #1e1e1f;
+}
+
+/* Light mode specific background */
+html:not(.dark) .sci-fi-card {
+    --card-bg: #ffffff;
+}

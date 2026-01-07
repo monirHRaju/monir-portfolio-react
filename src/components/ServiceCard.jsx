@@ -12,7 +12,7 @@ const ServiceCard = ({
     <motion.div
       whileHover={{ y: -6 }}
       transition={{ type: "spring", stiffness: 200, damping: 15 }}
-      className="group rounded-2xl border border-white/10 bg-gradient-to-b from-[#141414] to-[#0f0f0f] p-6 shadow-lg hover:border-green-500/40"
+      className="sci-fi-card group rounded-2xl p-6 shadow-lg"
     >
       {/* Icon */}
       <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-500/10 text-green-400">

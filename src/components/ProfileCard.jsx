@@ -40,7 +40,7 @@ const ProfileCard = () => {
                     rotateY,
                     transformStyle: "preserve-3d",
                 }}
-                className="bg-card-light dark:bg-card-dark rounded-3xl shadow-2xl overflow-hidden h-full min-h-[600px] flex flex-col relative border border-gray-200 dark:border-gray-800 transition-colors duration-300"
+                className="rounded-3xl shadow-2xl overflow-hidden h-full min-h-[600px] flex flex-col relative transition-colors duration-300"
             >
                 <div className="relative h-[450px] w-full overflow-hidden clip-path-slant">
                      {/* Note: In a real app, import the image or put it in public folder. Using the original URL for now */}

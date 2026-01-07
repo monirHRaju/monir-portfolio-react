@@ -5,10 +5,12 @@ import Resume from "./pages/Resume";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
 import SmoothScrolling from "./components/SmoothScrolling";
+import CustomCursor from "./components/CustomCursor";
 
 function App() {
   return (
     <SmoothScrolling>
+      <CustomCursor />
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route index element={<About />} />
