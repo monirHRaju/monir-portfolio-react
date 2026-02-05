@@ -1,7 +1,6 @@
 // Image imported via URL in img tag
 import { FaLinkedin, FaDribbble, FaTwitter, FaGithub, FaDownload, FaPaperPlane } from "react-icons/fa";
 import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
-import { Link } from "react-router-dom";
 
 const ProfileCard = () => {
     const x = useMotionValue(0);
@@ -45,15 +44,15 @@ const ProfileCard = () => {
                 <div className="relative h-[450px] w-full overflow-hidden clip-path-slant">
                      {/* Note: In a real app, import the image or put it in public folder. Using the original URL for now */}
                     <img 
-                        alt="Benjamin Ryan Portrait" 
-                        className="absolute inset-0 w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-500" 
-                        src="/monir profile photo-binary.jpg"
+                        alt="Monir Hossain Frontend Developer Portrait Profile Photo" 
+                        className="absolute inset-0 w-full h-full object-cover filter hover:grayscale-0 transition-all duration-500" 
+                        src="/monir-profile-photo-binary.jpg"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-card-dark via-transparent to-transparent opacity-90"></div>
                 </div>
 
                 <div className="absolute top-[340px] left-0 right-0 text-center px-6 z-20 transform translate-z-10">
-                    <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-1">Monir Hossain</h1>
+                    <h1 className="text-3xl font-bold text-white mb-1">Monir Hossain</h1>
                     <div className="inline-flex items-center justify-center px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200 dark:border-gray-700">
                         <span className="text-sm text-gray-600 dark:text-gray-300">Frontend Developer</span>
                     </div>
@@ -67,14 +66,24 @@ const ProfileCard = () => {
                 </div>
 
                 <div className="mt-auto flex border-t border-gray-200 dark:border-gray-800 divide-x divide-gray-200 dark:divide-gray-800 h-16 relative top-0 bg-card-light dark:bg-card-dark">
-                    <a className="flex-1 flex items-center justify-center gap-2 text-sm font-bold uppercase tracking-wide hover:text-primary transition-colors group" href="https://drive.google.com/file/d/1Hi3vrR_qA5jxPi_Invp6VMjOchkQmbJk/view?usp=sharing" target="_blank" rel="noreferrer">
+                    <a className="flex-1 flex items-center justify-center gap-2 text-sm font-bold uppercase tracking-wide hover:text-primary transition-colors group" href="https://drive.google.com/file/d/1v4HNRHGRvb8lOkL6VxQU2EyIyDbSloV3/view?usp=sharing" target="_blank" rel="noreferrer">
                         Download CV
                         <FaDownload className="text-lg group-hover:animate-bounce" />
                     </a>
-                    <Link className="flex-1 flex items-center justify-center gap-2 text-sm font-bold uppercase tracking-wide hover:text-primary transition-colors" to="/contact">
+                    <button onClick={() => {
+                        const mainContent = document.getElementById("main-content-scroll");
+                        const element = mainContent?.querySelector("#contact");
+                        if (element && mainContent) {
+                            const offsetTop = element.offsetTop - 40;
+                            mainContent.scrollTo({
+                                top: offsetTop,
+                                behavior: "smooth"
+                            });
+                        }
+                    }} className="flex-1 flex items-center justify-center gap-2 text-sm font-bold uppercase tracking-wide hover:text-primary transition-colors">
                         Contact Me
                         <FaPaperPlane className="text-lg -rotate-0" />
-                    </Link>
+                    </button>
                 </div>
             </motion.div>
         </div>

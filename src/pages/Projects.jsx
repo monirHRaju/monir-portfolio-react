@@ -33,6 +33,15 @@ const Projects = () => {
             desc: "eTutorBD is a platform where parents, students and tutors can easily connect with each other.",
             tech: ["React", "Firebase", "MongoDB", "Express.js", "Node.js", "Stripe"]
         },
+        
+        {
+            title: "ZapShift Courier",
+            category: "Applications",
+            image: "https://i.ibb.co.com/PGBkqDbV/zap-shift-parcel.png",
+            href: "https://zap-shift-courier-209ed.web.app/",
+            desc: "ZapShift Courier is a courier service platform where users can easily book and track their parcel delivery.",
+            tech: ["React", "Express.js", "Firebase", "MongoDB", "Node.js", "Stripe"]
+        },
 
         
     ];

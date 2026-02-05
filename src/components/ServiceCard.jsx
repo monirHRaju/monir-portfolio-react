@@ -7,7 +7,15 @@ const ServiceCard = ({
   tech = [],
   linkText = "View Projects",
   link = "#",
+  onLinkClick = null,
 }) => {
+  const handleClick = (e) => {
+    if (onLinkClick) {
+      e.preventDefault();
+      onLinkClick();
+    }
+  };
+
   return (
     <motion.div
       whileHover={{ y: -6 }}
@@ -46,7 +54,8 @@ const ServiceCard = ({
       {/* CTA */}
       <a
         href={link}
-        className="inline-flex items-center gap-1 text-sm font-medium text-green-400 transition group-hover:gap-2"
+        onClick={handleClick}
+        className="inline-flex items-center gap-1 text-sm font-medium text-green-400 transition group-hover:gap-2 cursor-pointer"
       >
         {linkText}
         <span>→</span>
