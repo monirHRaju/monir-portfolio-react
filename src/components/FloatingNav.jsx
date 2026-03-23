@@ -15,7 +15,7 @@ const FloatingNav = () => {
 
     useEffect(() => {
         const handleScroll = () => {
-            const sections = ["about", "resume", "projects", "contact"];
+            const sections = ["home", "about", "resume", "projects", "contact"];
             for (const section of sections) {
                 const el = document.getElementById(section);
                 if (el) {
@@ -32,17 +32,14 @@ const FloatingNav = () => {
     }, []);
 
     const scrollToSection = (id) => {
-        if (id === "home") {
-            window.scrollTo({ top: 0, behavior: "smooth" });
-            setActiveSection("home");
+        const el = document.getElementById(id);
+        if (el) {
+            const top = el.getBoundingClientRect().top + window.scrollY - 80;
+            window.scrollTo({ top, behavior: "smooth" });
         } else {
-            const el = document.getElementById(id);
-            if (el) {
-                const top = el.getBoundingClientRect().top + window.scrollY - 80;
-                window.scrollTo({ top, behavior: "smooth" });
-                setActiveSection(id);
-            }
+            window.scrollTo({ top: 0, behavior: "smooth" });
         }
+        setActiveSection(id);
         setOpen(false);
     };
 

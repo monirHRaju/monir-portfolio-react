@@ -130,6 +130,31 @@ const Home = () => {
 
   return (
     <div className="space-y-20">
+      {/* Video Intro Section */}
+      <section id="home" className="fade-in">
+        <h2 className="text-2xl font-bold mb-6 flex items-center">
+          <span className="text-primary mr-1">V</span>ideo Intro
+        </h2>
+        <div className="relative rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700 shadow-xl bg-black">
+          {/* Decorative top bar */}
+          <div className="flex items-center gap-1.5 px-4 py-2.5 bg-gray-100 dark:bg-zinc-800 border-b border-gray-200 dark:border-gray-700">
+            <span className="w-3 h-3 rounded-full bg-red-400"></span>
+            <span className="w-3 h-3 rounded-full bg-yellow-400"></span>
+            <span className="w-3 h-3 rounded-full bg-green-400"></span>
+            <span className="ml-3 text-xs text-gray-400 font-mono truncate">intro.mp4</span>
+          </div>
+          <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
+            <iframe
+              src="https://drive.google.com/file/d/1RSsOoZUC2J_Xznkv21KdSfvM5esBNnQT/preview"
+              title="Video Introduction"
+              allow="autoplay"
+              allowFullScreen
+              className="absolute inset-0 w-full h-full"
+            ></iframe>
+          </div>
+        </div>
+      </section>
+
       {/* About Section */}
       <section id="about" className="fade-in">
         <h2 className="text-2xl font-bold mb-6 flex items-center">
