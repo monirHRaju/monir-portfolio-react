@@ -19,29 +19,19 @@ const Sidebar = () => {
     useEffect(() => {
         const handleScroll = () => {
             const sections = ["about", "resume", "projects", "contact"];
-            const mainContent = document.getElementById("main-content-scroll");
-            
-            if (mainContent) {
-                sections.forEach(section => {
-                    const element = mainContent.querySelector(`#${section}`);
-                    if (element) {
-                        const rect = element.getBoundingClientRect();
-                        const containerRect = mainContent.getBoundingClientRect();
-                        const relativeTop = rect.top - containerRect.top;
-                        
-                        if (relativeTop < 200 && relativeTop + rect.height > 200) {
-                            setActiveSection(section);
-                        }
+            sections.forEach(section => {
+                const element = document.getElementById(section);
+                if (element) {
+                    const rect = element.getBoundingClientRect();
+                    if (rect.top < 200 && rect.bottom > 200) {
+                        setActiveSection(section);
                     }
-                });
-            }
+                }
+            });
         };
 
-        const mainContent = document.getElementById("main-content-scroll");
-        if (mainContent) {
-            mainContent.addEventListener("scroll", handleScroll);
-            return () => mainContent.removeEventListener("scroll", handleScroll);
-        }
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
     const toggleTheme = () => {
@@ -49,15 +39,10 @@ const Sidebar = () => {
     };
 
     const scrollToSection = (sectionId) => {
-        const mainContent = document.getElementById("main-content-scroll");
-        const element = mainContent?.querySelector(`#${sectionId}`);
-        
-        if (element && mainContent) {
-            const offsetTop = element.offsetTop - 40;
-            mainContent.scrollTo({
-                top: offsetTop,
-                behavior: "smooth"
-            });
+        const element = document.getElementById(sectionId);
+        if (element) {
+            const top = element.getBoundingClientRect().top + window.scrollY - 80;
+            window.scrollTo({ top, behavior: "smooth" });
             setActiveSection(sectionId);
         }
     };

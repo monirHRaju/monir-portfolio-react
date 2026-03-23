@@ -44,7 +44,7 @@ const ProfileCard = () => {
                 <div className="relative h-[450px] w-full overflow-hidden clip-path-slant">
                      {/* Note: In a real app, import the image or put it in public folder. Using the original URL for now */}
                     <img 
-                        alt="Monir Hossain Frontend Developer Portrait Profile Photo" 
+                        alt="Monir Hossain Frontend focused MERN Stack Developer Portrait Profile Photo"
                         className="absolute inset-0 w-full h-full object-cover filter hover:grayscale-0 transition-all duration-500" 
                         src="/monir-profile-photo-binary.jpg"
                     />
@@ -54,7 +54,7 @@ const ProfileCard = () => {
                 <div className="absolute top-[340px] left-0 right-0 text-center px-6 z-20 transform translate-z-10">
                     <h1 className="text-3xl font-bold text-white mb-1">Monir Hossain</h1>
                     <div className="inline-flex items-center justify-center px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200 dark:border-gray-700">
-                        <span className="text-sm text-gray-600 dark:text-gray-300">Frontend Developer</span>
+                        <span className="text-sm text-gray-600 dark:text-gray-300">Frontend focused MERN Stack Developer</span>
                     </div>
 
                     <div className="flex justify-center gap-4 mt-4">
@@ -71,18 +71,14 @@ const ProfileCard = () => {
                         <FaDownload className="text-lg group-hover:animate-bounce" />
                     </a>
                     <button onClick={() => {
-                        const mainContent = document.getElementById("main-content-scroll");
-                        const element = mainContent?.querySelector("#contact");
-                        if (element && mainContent) {
-                            const offsetTop = element.offsetTop - 40;
-                            mainContent.scrollTo({
-                                top: offsetTop,
-                                behavior: "smooth"
-                            });
+                        const element = document.getElementById("contact");
+                        if (element) {
+                            const top = element.getBoundingClientRect().top + window.scrollY - 80;
+                            window.scrollTo({ top, behavior: "smooth" });
                         }
                     }} className="flex-1 flex items-center justify-center gap-2 text-sm font-bold uppercase tracking-wide hover:text-primary transition-colors">
                         Contact Me
-                        <FaPaperPlane className="text-lg -rotate-0" />
+                        <FaPaperPlane className="text-lg rotate-0" />
                     </button>
                 </div>
             </motion.div>
