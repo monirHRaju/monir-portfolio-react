@@ -1,85 +1,90 @@
-// Image imported via URL in img tag
 import { FaLinkedin, FaDribbble, FaTwitter, FaGithub, FaDownload, FaPaperPlane } from "react-icons/fa";
 import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
 
 const ProfileCard = () => {
     const x = useMotionValue(0);
     const y = useMotionValue(0);
-
     const mouseX = useSpring(x, { stiffness: 150, damping: 15 });
     const mouseY = useSpring(y, { stiffness: 150, damping: 15 });
-
-    const rotateX = useTransform(mouseY, [-0.5, 0.5], [7, -7]);
-    const rotateY = useTransform(mouseX, [-0.5, 0.5], [-7, 7]);
+    const rotateX = useTransform(mouseY, [-0.5, 0.5], [5, -5]);
+    const rotateY = useTransform(mouseX, [-0.5, 0.5], [-5, 5]);
 
     const handleMouseMove = (e) => {
         const rect = e.currentTarget.getBoundingClientRect();
-        const width = rect.width;
-        const height = rect.height;
-        const mouseXVal = e.clientX - rect.left;
-        const mouseYVal = e.clientY - rect.top;
-        const xPct = mouseXVal / width - 0.5;
-        const yPct = mouseYVal / height - 0.5;
-        x.set(xPct);
-        y.set(yPct);
+        x.set((e.clientX - rect.left) / rect.width - 0.5);
+        y.set((e.clientY - rect.top) / rect.height - 0.5);
     };
 
-    const handleMouseLeave = () => {
-        x.set(0);
-        y.set(0);
+    const handleMouseLeave = () => { x.set(0); y.set(0); };
+
+    const scrollToContact = () => {
+        const el = document.getElementById("contact");
+        if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: "smooth" });
     };
 
     return (
-        <div className="w-full md:w-[400px] flex-shrink-0 relative z-10 perspective-1000">
-            <motion.div 
+        <div className="w-full shrink-0 relative z-10 perspective-1000">
+            <motion.div
                 onMouseMove={handleMouseMove}
                 onMouseLeave={handleMouseLeave}
-                style={{
-                    rotateX,
-                    rotateY,
-                    transformStyle: "preserve-3d",
-                }}
-                className="rounded-3xl shadow-2xl overflow-hidden h-full min-h-[600px] flex flex-col relative transition-colors duration-300"
+                style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+                className="rounded-3xl shadow-2xl overflow-hidden bg-card-light dark:bg-card-dark border border-gray-200 dark:border-gray-800 transition-colors duration-300"
             >
-                <div className="relative h-[450px] w-full overflow-hidden clip-path-slant">
-                     {/* Note: In a real app, import the image or put it in public folder. Using the original URL for now */}
-                    <img 
-                        alt="Monir Hossain Frontend focused MERN Stack Developer Portrait Profile Photo"
-                        className="absolute inset-0 w-full h-full object-cover filter hover:grayscale-0 transition-all duration-500" 
-                        src="/monir-profile-photo-binary.jpg"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-card-dark via-transparent to-transparent opacity-90"></div>
-                </div>
-
-                <div className="absolute top-[340px] left-0 right-0 text-center px-6 z-20 transform translate-z-10">
-                    <h1 className="text-3xl font-bold text-white mb-1">Monir Hossain</h1>
-                    <div className="inline-flex items-center justify-center px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200 dark:border-gray-700">
-                        <span className="text-sm text-gray-600 dark:text-gray-300">Frontend focused MERN Stack Developer</span>
+                <div className="flex flex-col md:flex-row">
+                    {/* Photo */}
+                    <div className="relative md:w-80 h-72 md:h-auto shrink-0 overflow-hidden">
+                        <img
+                            alt="Monir Hossain Frontend focused MERN Stack Developer Portrait Profile Photo"
+                            className="w-full h-full object-cover object-top transition-all duration-500 hover:scale-105"
+                            src="/monir-profile-photo-binary.jpg"
+                        />
+                        <div className="absolute inset-0 bg-linear-to-b md:bg-linear-to-r from-transparent via-transparent to-card-light dark:to-card-dark opacity-60" />
                     </div>
 
-                    <div className="flex justify-center gap-4 mt-4">
-                        <a className="text-gray-500 hover:text-white dark:text-gray-400 dark:hover:text-white transition-colors transform hover:scale-110" href="https://www.linkedin.com/in/monirhraju/" target="_blank" rel="noreferrer"><FaLinkedin className="text-lg" /></a>
-                        <a className="text-gray-500 hover:text-white dark:text-gray-400 dark:hover:text-white transition-colors transform hover:scale-110" href="https://dribbble.com/monirhraju" target="_blank" rel="noreferrer"><FaDribbble className="text-lg" /></a>
-                        <a className="text-gray-500 hover:text-white dark:text-gray-400 dark:hover:text-white transition-colors transform hover:scale-110" href="https://x.com/monirhraju" target="_blank" rel="noreferrer"><FaTwitter className="text-lg" /></a>
-                        <a className="text-gray-500 hover:text-white dark:text-gray-400 dark:hover:text-white transition-colors transform hover:scale-110" href="https://github.com/monirHRaju" target="_blank" rel="noreferrer"><FaGithub className="text-lg" /></a>
-                    </div>
-                </div>
+                    {/* Info */}
+                    <div className="flex flex-col justify-center px-8 py-10 flex-1">
+                        <span className="text-primary text-xs font-bold tracking-widest uppercase mb-3">
+                            Frontend focused MERN Stack Developer
+                        </span>
+                        <h1 className="text-5xl md:text-6xl font-extrabold text-gray-900 dark:text-white leading-tight mb-6">
+                            Monir<br />Hossain
+                        </h1>
 
-                <div className="mt-auto flex border-t border-gray-200 dark:border-gray-800 divide-x divide-gray-200 dark:divide-gray-800 h-16 relative top-0 bg-card-light dark:bg-card-dark">
-                    <a className="flex-1 flex items-center justify-center gap-2 text-sm font-bold uppercase tracking-wide hover:text-primary transition-colors group" href="https://drive.google.com/file/d/1v4HNRHGRvb8lOkL6VxQU2EyIyDbSloV3/view?usp=sharing" target="_blank" rel="noreferrer">
-                        Download CV
-                        <FaDownload className="text-lg group-hover:animate-bounce" />
-                    </a>
-                    <button onClick={() => {
-                        const element = document.getElementById("contact");
-                        if (element) {
-                            const top = element.getBoundingClientRect().top + window.scrollY - 80;
-                            window.scrollTo({ top, behavior: "smooth" });
-                        }
-                    }} className="flex-1 flex items-center justify-center gap-2 text-sm font-bold uppercase tracking-wide hover:text-primary transition-colors">
-                        Contact Me
-                        <FaPaperPlane className="text-lg rotate-0" />
-                    </button>
+                        <div className="flex gap-4 mb-8">
+                            <a href="https://www.linkedin.com/in/monirhraju/" target="_blank" rel="noreferrer"
+                                className="text-gray-400 hover:text-primary transition-colors text-xl">
+                                <FaLinkedin />
+                            </a>
+                            <a href="https://dribbble.com/monirhraju" target="_blank" rel="noreferrer"
+                                className="text-gray-400 hover:text-primary transition-colors text-xl">
+                                <FaDribbble />
+                            </a>
+                            <a href="https://x.com/monirhraju" target="_blank" rel="noreferrer"
+                                className="text-gray-400 hover:text-primary transition-colors text-xl">
+                                <FaTwitter />
+                            </a>
+                            <a href="https://github.com/monirHRaju" target="_blank" rel="noreferrer"
+                                className="text-gray-400 hover:text-primary transition-colors text-xl">
+                                <FaGithub />
+                            </a>
+                        </div>
+
+                        <div className="flex flex-wrap gap-3">
+                            <a
+                                href="https://drive.google.com/file/d/1v4HNRHGRvb8lOkL6VxQU2EyIyDbSloV3/view?usp=sharing"
+                                target="_blank" rel="noreferrer"
+                                className="flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-full text-sm font-bold hover:bg-primary/90 transition-all hover:shadow-lg hover:shadow-primary/30"
+                            >
+                                Download CV <FaDownload className="text-xs" />
+                            </a>
+                            <button
+                                onClick={scrollToContact}
+                                className="flex items-center gap-2 px-6 py-3 border border-gray-300 dark:border-gray-600 rounded-full text-sm font-bold hover:border-primary hover:text-primary dark:hover:border-primary dark:hover:text-primary transition-all"
+                            >
+                                Contact Me <FaPaperPlane className="text-xs" />
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </motion.div>
         </div>

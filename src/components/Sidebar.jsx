@@ -55,7 +55,7 @@ const Sidebar = () => {
     ];
 
     return (
-        <nav className="fixed left-4 top-1/2 transform -translate-y-1/2 z-50 md:sticky md:top-8 md:translate-y-0 hidden md:flex flex-col items-center py-6 px-3 rounded-full h-auto min-h-[500px] justify-between transition-all duration-300 sci-fi-sidebar">
+        <nav className="fixed left-4 top-1/2 transform -translate-y-1/2 z-50 hidden md:flex flex-col items-center py-6 px-3 rounded-full h-auto min-h-125 justify-between transition-all duration-300 sci-fi-sidebar">
             <button className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-500 dark:text-gray-400 mb-6 z-10">
                 <img src="logo.svg" width={30} height={30} alt="" />
             </button>

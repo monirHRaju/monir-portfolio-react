@@ -1,27 +1,22 @@
 import { motion } from "framer-motion";
-import Sidebar from "../components/Sidebar";
+import TopNav from "../components/TopNav";
 import MobileNav from "../components/MobileNav";
 import ProfileCard from "../components/ProfileCard";
-import FloatingNav from "../components/FloatingNav";
 import Home from "../pages/Home";
 
 const MainLayout = () => {
     return (
-        <div className="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-200 font-body transition-colors duration-300 min-h-screen flex items-start justify-center p-4 md:p-8 overflow-x-hidden">
-            <div className="relative w-full max-w-7xl mx-auto flex flex-col md:flex-row gap-6 items-start justify-center">
-                {/* Desktop Sidebar */}
-                <Sidebar />
+        <div className="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-200 font-body transition-colors duration-300 min-h-screen">
+            <TopNav />
 
-                {/* Profile Card */}
-                <div className="md:sticky md:top-8 md:self-start w-full md:w-auto flex-shrink-0">
-                    <ProfileCard />
-                </div>
+            <div className="max-w-6xl mx-auto px-4 md:px-8 py-8 flex flex-col gap-6 overflow-x-hidden">
+                {/* Hero Profile */}
+                <ProfileCard />
 
-                {/* Main Content Area */}
-                <div id="main-content-scroll" className="flex-1 w-full bg-card-light dark:bg-card-dark rounded-3xl shadow-xl border border-gray-200 dark:border-gray-800 p-8 md:p-12 lg:p-16 relative overflow-x-hidden">
-                     {/* Decorative blur blob from legacy */}
-                    <div className="absolute -top-10 -right-10 w-40 h-40 bg-primary opacity-5 rounded-full blur-3xl pointer-events-none"></div>
-                    
+                {/* Main Content */}
+                <div id="main-content-scroll" className="w-full bg-card-light dark:bg-card-dark rounded-3xl shadow-xl border border-gray-200 dark:border-gray-800 p-8 md:p-12 lg:p-16 relative overflow-x-hidden">
+                    <div className="absolute -top-10 -right-10 w-40 h-40 bg-primary opacity-5 rounded-full blur-3xl pointer-events-none" />
+
                     <motion.div
                         initial={{ opacity: 0, y: 10, scale: 0.98 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -33,11 +28,7 @@ const MainLayout = () => {
                 </div>
             </div>
 
-            {/* Mobile Navigation */}
             <MobileNav />
-
-            {/* Floating Navigation */}
-            <FloatingNav />
         </div>
     );
 };
