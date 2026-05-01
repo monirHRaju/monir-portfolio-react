@@ -1,6 +1,6 @@
 import { FaReact, FaNodeJs, FaDatabase, FaHtml5, FaCss3, FaJs, FaGitAlt, FaEye, FaPaperPlane, FaGithub } from "react-icons/fa";
 import { SiNextdotjs, SiTypescript, SiRedux, SiMongodb, SiNestjs, SiExpress, SiFirebase, SiTailwindcss, SiVercel, SiNetlify, SiFramer, SiGithub } from "react-icons/si";
-import { MdSchool } from "react-icons/md";
+import { MdSchool, MdAutoAwesome } from "react-icons/md";
 import { useRef, useState } from 'react';
 import { AnimatePresence, motion as m } from "framer-motion";
 import emailjs from '@emailjs/browser';
@@ -13,13 +13,54 @@ const Home = () => {
   const [filter, setFilter] = useState('All');
   const [selectedProject, setSelectedProject] = useState(null);
 
-  const categories = ['All', 'Web Design', 'Applications'];
+  const categories = ['All', 'Full Stack', 'React.js', 'Next.js', 'SaaS', 'AI/ML'];
 
   const projects = [
+    
+    {
+      title: "Deshio e-Commerce Application",
+      type: "Full Stack Application",
+      category: ["Next.js", "Full Stack"],
+      primaryTech: "Next.js",
+      image: "https://i.ibb.co.com/nMGV3sgw/deshio-ecom-sc.png",
+      href: "https://deshio-ecom-app.vercel.app/",
+      githubFrontend: "https://github.com/monirHRaju/deshio-ecom-next-ts-express-client.git",
+      githubBackend: "https://github.com/monirHRaju/deshio-ecommerce-server.git",
+      desc: "Deshio is a full-featured e-commerce platform built with Next.js and TypeScript — offering product browsing, cart management, secure checkout, and an admin dashboard.",
+      tech: ["Next.js", "Express.js", "TypeScript", "MongoDB", "Node.js"],
+      features: [
+        "Product catalog with search and category filtering",
+        "Shopping cart and wishlist management",
+        "Secure checkout with order tracking",
+        "Admin dashboard for product and order management",
+        "TypeScript for end-to-end type safety",
+        "Server-side rendering for SEO performance",
+      ],
+    },
+    {
+      title: "School Management App",
+      type: "Full Stack Application",
+      category: ["Next.js", "Full Stack", "SaaS"],
+      primaryTech: "Next.js",
+      image: "https://i.ibb.co.com/Jw6F1vmC/school-erp.png",
+      href: "https://amaar-school-app.vercel.app/",
+      githubFrontend: "https://github.com/monirHRaju/eduCore-school-SaaS-client.git",
+      githubBackend: "https://github.com/monirHRaju/school-erp-backend.git",
+      desc: "The all-in-one platform for schools — manage students, collect fees, track attendance, monitor finances, and generate reports from a single powerful dashboard.",
+      tech: ["Next.js", "TypeScript", "Express.js", "MongoDB", "Node.js"],
+      features: [
+        "Student enrollment and profile management",
+        "Fee collection with payment tracking",
+        "Attendance monitoring with daily reports",
+        "Financial dashboard with analytics",
+        "Role-based access (admin, teacher, student, parent)",
+        "Report generation and export",
+      ],
+    },
     {
       title: "E-Learning Platform",
       type: "Full Stack Application",
-      category: "Applications",
+      category: ["React.js", "Full Stack"],
       primaryTech: "React",
       image: "https://i.ibb.co.com/4wmkfQW0/elearningapp.png",
       href: "https://elearning-platform-a10.web.app/",
@@ -38,8 +79,8 @@ const Home = () => {
     },
     {
       title: "Hero App",
-      type: "Web Design",
-      category: "Web Design",
+      type: "React Application",
+      category: "React.js",
       primaryTech: "React",
       image: "https://i.ibb.co.com/Y4d92TYC/image.png",
       href: "https://a08-hero-apps.netlify.app/",
@@ -58,7 +99,7 @@ const Home = () => {
     {
       title: "eTutor App",
       type: "Full Stack Application",
-      category: "Applications",
+      category: ["React.js", "Full Stack"],
       primaryTech: "React",
       image: "https://i.ibb.co.com/8D5g8GSF/image.png",
       href: "https://etutorbd-tutor-app.web.app/",
@@ -74,32 +115,16 @@ const Home = () => {
         "Multi-role dashboard (student, tutor, admin)",
         "Fully responsive with Tailwind CSS",
       ],
-    },
-    {
-      title: "ZapShift Courier",
-      type: "Full Stack Application",
-      category: "Applications",
-      primaryTech: "React",
-      image: "https://i.ibb.co.com/PGBkqDbV/zap-shift-parcel.png",
-      href: "https://zap-shift-courier-209ed.web.app/",
-      githubFrontend: "https://github.com/monirHRaju/zapshift-client",
-      githubBackend: "https://github.com/monirHRaju/zapshift-server",
-      desc: "ZapShift Courier is a courier service platform where users can easily book and track their parcel delivery.",
-      tech: ["React", "Express.js", "Firebase", "MongoDB", "Node.js", "Stripe"],
-      features: [
-        "Parcel booking with real-time tracking",
-        "Firebase authentication and protected routes",
-        "Stripe payment for delivery charges",
-        "Admin panel for managing deliveries",
-        "Delivery agent assignment system",
-        "Status updates and notification flow",
-      ],
-    },
+    }
   ];
 
-  const filteredProjects = filter === 'All' 
-    ? projects 
-    : projects.filter(project => project.category === filter);
+  const filteredProjects = filter === 'All'
+    ? projects
+    : projects.filter(project =>
+        Array.isArray(project.category)
+          ? project.category.includes(filter)
+          : project.category === filter
+      );
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -133,7 +158,7 @@ const Home = () => {
       {/* Video Intro Section */}
       <section id="home" className="fade-in">
         <h2 className="text-2xl font-bold mb-6 flex items-center">
-          <span className="text-primary mr-1">V</span>ideo Intro
+          <span className="text-primary">V</span>ideo Intro
         </h2>
         <div className="relative rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700 shadow-xl bg-black">
           {/* Decorative top bar */}
@@ -158,12 +183,12 @@ const Home = () => {
       {/* About Section */}
       <section id="about" className="fade-in">
         <h2 className="text-2xl font-bold mb-6 flex items-center">
-          <span className="text-primary mr-1">A</span>bout Me
+          <span className="text-primary">A</span>bout Me
         </h2>
         
         <div className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed space-y-4 mb-8">
           <p>
-            I am Md. Monir Hossain, a Frontend focused MERN Stack Developer. I build full-stack web applications using React, Express.js, Node.js, Next.js, and MongoDB.
+            I am Md. Monir Hossain, a MERN Stack Developer. I build full-stack web applications using React, Express.js, Node.js, Next.js, and MongoDB.
           </p>
           <p>
             Experienced in REST APIs, Firebase authentication, and deploying on Vercel, I am committed to delivering exceptional code quality, driving innovation, and providing seamless user experiences. Throughout my career, I have developed and maintained responsive web applications and collaborated with cross-functional teams.
@@ -199,7 +224,7 @@ const Home = () => {
               0% { transform: translateX(0); }
               100% { transform: translateX(-50%); }
             }
-            .ticker-track { animation: ticker-scroll 28s linear infinite; }
+            .ticker-track { animation: ticker-scroll 50s linear infinite; }
             .ticker-track:hover { animation-play-state: paused; }
           `}</style>
           <div className="ticker-track flex gap-6 w-max">
@@ -246,7 +271,7 @@ const Home = () => {
                 <div className="w-12 h-12 rounded-xl bg-white dark:bg-zinc-800 border border-gray-200 dark:border-gray-700 flex items-center justify-center shadow-sm">
                   <Icon className={`text-2xl ${color}`} />
                 </div>
-                <span className="text-[10px] font-medium text-gray-500 dark:text-gray-400 whitespace-nowrap">{name}</span>
+                {/* <span className="text-[10px] font-medium text-gray-500 dark:text-gray-400 whitespace-nowrap">{name}</span> */}
               </div>
             ))}
           </div>
@@ -255,7 +280,7 @@ const Home = () => {
         {/* Tech Stack by Category */}
         <div className="mt-10">
           <h3 className="text-xl font-bold mb-6 flex items-center">
-            <span className="text-primary mr-1">T</span>ech Stack
+            <span className="text-primary">T</span>ech Stack
           </h3>
           <div className="space-y-6">
             {[
@@ -296,16 +321,27 @@ const Home = () => {
                   { icon: SiNetlify, name: "Netlify", color: "text-teal-500" },
                 ],
               },
+              {
+                label: "AI & Developer Tools",
+                color: "text-violet-500",
+                items: [
+                  { icon: MdAutoAwesome, name: "Claude", color: "text-orange-400" },
+                  { icon: MdAutoAwesome, name: "Cursor", color: "text-blue-500" },
+                  { icon: MdAutoAwesome, name: "Antigravity", color: "text-indigo-500" },
+                  { icon: MdAutoAwesome, name: "OpenClaw", color: "text-green-500" },
+                  { icon: MdAutoAwesome, name: "Loveable", color: "text-pink-500" },
+                ],
+              },
             ].map(({ label, color, items }) => (
               <div key={label} className="sci-fi-card rounded-2xl p-5 border border-gray-200 dark:border-gray-800">
                 <h4 className={`text-xs font-bold uppercase tracking-widest mb-4 ${color}`}>{label}</h4>
                 <div className="flex flex-wrap gap-3">
                   {items.map(({ icon: Icon, name, color: ic }) => (
-                    <div key={name} className="flex flex-col items-center gap-1.5 w-14">
-                      <div className="w-10 h-10 rounded-xl bg-gray-100 dark:bg-zinc-800 border border-gray-200 dark:border-gray-700 flex items-center justify-center hover:scale-110 transition-transform">
+                    <div key={name} className="flex flex-col items-center gap-3 w-18">
+                      <div className="w-16 h-16 rounded-xl bg-gray-100 dark:bg-zinc-800 border border-gray-200 dark:border-gray-700 flex items-center justify-center hover:scale-110 transition-transform">
                         <Icon className={`text-xl ${ic}`} />
                       </div>
-                      <span className="text-[10px] text-center font-medium text-gray-500 dark:text-gray-400 leading-tight">{name}</span>
+                      <span className="text-[16px] text-center font-medium text-gray-500 dark:text-gray-400 leading-tight">{name}</span>
                     </div>
                   ))}
                 </div>
@@ -316,7 +352,7 @@ const Home = () => {
 
         <div className="mt-12">
           <h3 className="text-2xl font-bold mb-6 flex items-center">
-            <span className="text-primary mr-1">M</span>y Services
+            <span className="text-primary">M</span>y Services
           </h3>
           <MyServices />
         </div>
@@ -325,7 +361,7 @@ const Home = () => {
       {/* Resume Section */}
       <section id="resume" className="fade-in">
         <h2 className="text-2xl font-bold mb-8 flex items-center">
-          <span className="text-primary mr-1">R</span>esume
+          <span className="text-primary">R</span>esume
         </h2>
         {/* Experience section hidden (fresher) */}
 
@@ -338,19 +374,17 @@ const Home = () => {
           </div>
           <div className="relative pl-8 md:pl-12 border-l border-gray-200 dark:border-gray-700 space-y-10">
             <div className="relative timeline-item">
-              <h4 className="text-lg font-semibold text-gray-900 dark:text-white">Master in Accounting</h4>
-              <div className="text-sm text-primary mb-2 font-medium">2013 — 2014</div>
+              <h4 className="text-lg font-semibold text-gray-900 dark:text-white">Master Degree</h4>
+              <div className="text-sm text-primary mb-2 font-medium">2014</div>
               <div className="text-sm text-gray-500 dark:text-gray-400 mb-3">National University of Bangladesh</div>
-              <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-                Specialization in Accounting. Thesis on "Accounting for Nonprofit Organizations". Graduated with Honors.
-              </p>
+              
             </div>
           </div>
         </div>
 
         <div className="mt-12">
           <h3 className="text-xl font-bold mb-6 flex items-center">
-            <span className="text-primary mr-1">S</span>kills Overview
+            <span className="text-primary">S</span>kills Overview
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="sci-fi-card bg-gray-50 dark:bg-zinc-900/50 p-6 rounded-2xl border border-gray-200 dark:border-gray-800">
@@ -392,7 +426,7 @@ const Home = () => {
       <section id="projects" className="fade-in">
         <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
           <h2 className="text-2xl font-bold flex items-center">
-            <span className="text-primary mr-1">P</span>rojects
+            <span className="text-primary">P</span>rojects
           </h2>
           <ul className="flex flex-wrap gap-4 text-sm font-medium">
             {categories.map(cat => (
@@ -551,7 +585,7 @@ const Home = () => {
       <section id="contact" className="fade-in">
         <header className="mb-10">
           <h2 className="text-2xl font-bold mb-6 flex items-center">
-            <span className="text-primary mr-1">C</span>ontact
+            <span className="text-primary">C</span>ontact
           </h2>
         </header>
 

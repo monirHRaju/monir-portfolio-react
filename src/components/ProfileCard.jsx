@@ -44,7 +44,7 @@ const ProfileCard = () => {
                     {/* Info */}
                     <div className="flex flex-col justify-center px-8 py-10 flex-1">
                         <span className="text-primary text-xs font-bold tracking-widest uppercase mb-3">
-                            Frontend focused MERN Stack Developer
+                            MERN Stack Developer
                         </span>
                         <h1 className="text-5xl md:text-6xl font-extrabold text-gray-900 dark:text-white leading-tight mb-6">
                             Monir<br />Hossain

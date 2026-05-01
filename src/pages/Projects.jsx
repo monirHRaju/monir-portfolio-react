@@ -4,12 +4,12 @@ import { FaEye } from "react-icons/fa";
 const Projects = () => {
     const [filter, setFilter] = useState('All');
 
-    const categories = ['All', 'Web Design', 'Applications'];
+    const categories = ['All', 'Full Stack', 'React.js', 'Next.js', 'AI/ML'];
 
     const projects = [
         {
             title: "E-Learning Platform",
-            category: "Applications",
+            category: "React.js",
             image: "https://i.ibb.co.com/4wmkfQW0/elearningapp.png",
             href: "https://elearning-platform-a10.web.app/",
             desc: "eLearning is a digital application that provides a virtual space for accessing, managing, and delivering educational content and training programs anytime, anywhere.",
@@ -18,7 +18,7 @@ const Projects = () => {
         
         {
             title: "Hero App",
-            category: "Web Design",
+            category: "React.js",
             image: "https://i.ibb.co.com/Y4d92TYC/image.png",
             href: "https://a08-hero-apps.netlify.app/",
             desc: "At HERO.IO, we craft innovative apps designed to make everyday life simpler, smarter, and more exciting.",
@@ -27,20 +27,22 @@ const Projects = () => {
         
         {
             title: "eTutor App",
-            category: "Applications",
+            category: "Full Stack",
             image: "https://i.ibb.co.com/8D5g8GSF/image.png",
             href: "https://etutorbd-tutor-app.web.app/",
             desc: "eTutorBD is a platform where parents, students and tutors can easily connect with each other.",
             tech: ["React", "Firebase", "MongoDB", "Express.js", "Node.js", "Stripe"]
         },
-        
+        // https://i.ibb.co.com/6cKNqdym/grameen-enterprise.png
+        // https://i.ibb.co.com/Jw6F1vmC/school-erp.png
+        // https://i.ibb.co.com/nMGV3sgw/deshio-ecom-sc.png
         {
-            title: "ZapShift Courier",
-            category: "Applications",
-            image: "https://i.ibb.co.com/PGBkqDbV/zap-shift-parcel.png",
-            href: "https://zap-shift-courier-209ed.web.app/",
-            desc: "ZapShift Courier is a courier service platform where users can easily book and track their parcel delivery.",
-            tech: ["React", "Express.js", "Firebase", "MongoDB", "Node.js", "Stripe"]
+            title: "Grameen Enterprise",
+            category: "Next.js",
+            image: "https://i.ibb.co.com/6cKNqdym/grameen-enterprise.png",
+            href: "https://gp-enterprise-fashion.vercel.app/",
+            desc: "Premium garments accessories for global buyers — labels, tags, trims, and packaging crafted to brand perfection.",
+            tech: ["Next.js", "MongoDB", "Node.js"]
         },
 
         
@@ -54,7 +56,7 @@ const Projects = () => {
         <div className="fade-in">
              <header className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
                 <h2 className="text-2xl font-bold flex items-center">
-                    <span className="text-primary mr-1">P</span>rojects
+                    <span className="text-primary">P</span>rojects
                 </h2>
                 <ul className="flex flex-wrap gap-4 text-sm font-medium">
                     {categories.map(cat => (
